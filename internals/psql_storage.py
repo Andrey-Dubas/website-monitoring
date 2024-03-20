@@ -46,7 +46,6 @@ class SqlStore:
   
   def send_collected_requests(self):
     if len(self.collected_responses) > 0:
-      print("send collected requests")
       self.cursor.execute(
         "INSERT INTO app_data.requests (url, is_reached, status_code, found_pattern) VALUES " + 
         ', '.join([get_insert_values(r) for r in self.collected_responses]))

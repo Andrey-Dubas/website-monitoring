@@ -17,13 +17,11 @@ def get_response_hook(request: RunningRequest, sql_executor: psql_storage.SqlSto
   def response_hook(response, **kwargs):
     if not request.is_handled:
       request.is_handled = True
-      print("handle response")
       request_entity = request.on_response(response)
       sql_executor.collect_response(request_entity)
   return response_hook
 
 def poll_loop(monitoring_target_objects, heap_active_request_array, sql_executor):
-  print("start poll loop")
   while True:
     if len(monitoring_target_objects) > 0 and monitoring_target_objects[0].next_poll_time < time.monotonic():
       next_target = monitoring_target_objects.pop()
