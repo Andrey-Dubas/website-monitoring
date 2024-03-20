@@ -1,0 +1,46 @@
+version: "3.2"
+services:
+  app:
+    build:
+      context: ${PROJECTPATH}
+      dockerfile: scripts/development/Dockerfile
+      args:
+        SETTINGS_FILE: ${SETTINGS_FILE}
+    depends_on:
+      - request-mock
+      - db
+    volumes:
+      - type: bind
+        source: ../../internals/
+        target: /app
+      - type: bind
+        source: ${PROJECTPATH}/settings/
+        target: /settings
+    environment:
+      DB_CONNECTION_STRING: postgresql://adubas:password@db:5432/website_monitoring
+    networks:
+      - website-monitoring
+
+  request-mock:
+    image: "request-mock-image"
+    build:
+      context: ./request-mock
+      dockerfile: ../request-mock/Dockerfile
+    networks:
+      - website-monitoring
+
+  db:
+    image: "postgres"
+    volumes:
+      - ../integration-test/database/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ../.data/db/:/var/lib/postgresql/
+    environment:
+      POSTGRES_USER: adubas
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+      - "8080:8080"
+    networks:
+      - website-monitoring
+networks:
+  website-monitoring:

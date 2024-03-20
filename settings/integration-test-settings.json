@@ -1,0 +1,24 @@
+[
+  {
+    "target": "request-mock/200/_abc_",
+    "poll_period": "5s",
+    "max_wait_time": "10s",
+    "expected_regex": "abc"
+  },
+  {
+    "target": "request-mock/unavailable_every_5th_request",
+    "poll_period": "1s",
+    "max_wait_time": "1s"
+  },
+  {
+    "target": "request-mock/with_status_code/500/with_content/a",
+    "poll_period": "300ms",
+    "max_wait_time": "200ms"
+  },
+  {
+    "target": "/unavailable_every_5th_request",
+    "poll_period": "1m",
+    "max_wait_time": "2s",
+    "expected_regex": "dispatch_pagelet_replayable_actions"
+  }
+]

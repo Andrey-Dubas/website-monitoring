@@ -1,0 +1,32 @@
+[
+  {
+    "target": "google.com",
+    "poll_period": "5s",
+    "max_wait_time": "10s",
+    "expected_regex": "Google Inc."
+  },
+  {
+    "target": "amazon.de",
+    "poll_period": "5s",
+    "max_wait_time": "10s",
+    "expected_regex": "nav_cs_sports"
+  },
+  {
+    "target": "facebook.com",
+    "poll_period": "5s",
+    "max_wait_time": "10s",
+    "expected_regex": "dispatch_pagelet_replayable_actions"
+  },
+  {
+    "target": "github.com",
+    "poll_period": "1m",
+    "max_wait_time": "2s",
+    "expected_regex": "dispatch_pagelet_replayable_actions"
+  },
+  {
+    "target": "leetcode.com",
+    "poll_period": "500ms",
+    "max_wait_time": "3s",
+    "expected_regex": "interview|job"
+  }
+]

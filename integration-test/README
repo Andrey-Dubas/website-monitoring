@@ -1,0 +1,5 @@
+That is not really integration test, but rather closed environment.
+The intention here was to run the application with different settings
+and check the database state.
+
+And least at the moment a dev can run in and see how system behaves

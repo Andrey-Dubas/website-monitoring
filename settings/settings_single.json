@@ -1,0 +1,7 @@
+[
+  {
+    "target": "https://google.com",
+    "poll_period": "5s",
+    "max_wait_time": "10s"
+  }
+]
